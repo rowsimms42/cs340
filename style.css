@@ -34,7 +34,6 @@
 
 }
 
-
 table{
     border-width: medium;
     margin-left: 180px;
@@ -49,10 +48,39 @@ th{
 
 }
 
+
+
+
+
 .header{
     margin-left:180px;
 
 }
+
+table#td{
+    border-collapse: collapse;
+    text-align:center;
+
+}
+
+table#t2 tr:nth-child(even) {
+    background-color: #eee;
+    margin-right:20px;
+  }
+  table#t2 tr:nth-child(odd) {
+   background-color: #fff;
+   margin-right: 20px
+  }
+  table#t2 th {
+    background-color:navy;
+    color: white;
+    padding:20px;
+    
+  }
+  table#t2 tr{
+      text-align:center;
+      padding:0px, 20px, 0px, 0px;
+  }
 
 
 

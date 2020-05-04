@@ -1,0 +1,56 @@
+.navBar {
+    height: 100%; 
+    width: 120px; 
+    position: fixed; /*no scroll*/
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:navy;
+    overflow-x: hidden; 
+    padding-top: 20px;
+    }
+.navBar a {
+    padding: 10px 1px 10px 1px;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+    font-family: arial Impact;
+    color:white;
+    display: block;
+    }
+        
+.navBar a:hover {
+    background-color: rgba(0,0,0,0.3);
+    }
+
+.heading{
+    margin-left:100px;
+    font-family: arial bold;
+    font-size:20px;
+    color:black;
+    top:0;
+    margin-left: 180px;
+
+}
+
+
+table{
+    border: 1px solid black;
+    margin-left: 180px;
+    width: 500px;
+    padding:15px;
+
+}
+th{
+    height:50px;
+}
+.header{
+    margin-left:180px;
+
+}
+
+
+
+
+    

@@ -23,7 +23,7 @@
     <form id= "addDorms">
     
         <div class = "header">
-        <p>Input data for dorms:</p>
+        <p>Add dorm:</p>
         </div>
         <table>
             <tr>
@@ -45,6 +45,49 @@
         </table>
         </form>
     </div>
+
+    <div class = "table">
+        
+        <br>
+        <br>
+            <div class = "header">
+                <p>Search for dorm:</p>
+                </div>
+                <table>
+                    <tr>
+                        <td>Dorm ID:</td>
+                        <td><input type="text" id="dorm_id" name="dorm_id"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" id="Submit" value="Search"></td>
+                    </tr>
+                </table>
+            </form>
+        
+            <br>
+        <br>
+        <table id="t2">
+            <tr>
+                <th>Dorm ID</th>
+                <th>Dorm Name</th>
+                <th>Address</th>
+                <th>Dorm Capacity</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                
+            </tr>
+            <tr>
+                <td>D5</td>
+                <td>LexCorp</td>
+                <td>5 Meteor Rd</td>
+                <td>200</td>
+                <td><button type="button">Edit</button></td>
+                <td><button type="button">Delete</button></td> 
+            </tr>
+        
+        </table>
+         
+        </div>
 
 </body>
 </html>

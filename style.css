@@ -23,6 +23,9 @@
 .navBar a:hover {
     background-color: rgba(0,0,0,0.3);
     }
+.navBar a:active{
+    font-weight:bold;
+}
 
 .heading{
     margin-left:100px;

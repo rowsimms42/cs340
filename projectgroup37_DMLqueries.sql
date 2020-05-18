@@ -42,16 +42,16 @@ SELECT class_id, class_name, department, class_capacity FROM Classes WHERE class
 SELECT student_id, cid1, cid2, cid3, cid4, cid5 FROM Registration WHERE student_id = :student_ID_selected_from_registration_page
 
 -- add a new Major - how to add major_id value as auto increment (not input based)?
-INSERT INTO Majors (major_id, major_name, dept_chair, required_units) VALUES (:major_idInput, :major_nameInput, :dept_chairInput, :required_unitsInput)
+INSERT INTO Majors (major_name, dept_chair, required_units) VALUES (:major_nameInput, :dept_chairInput, :required_unitsInput)
 
 -- add a new Dorm - add dorm_id value as auto increment (not input)?
-INSERT INTO Dorms (dorm_id, dorm_name, dorm_address, dorm_capacity) VALUES (:dorm_idInput, :dorm_nameInput, :dorm_addressInput, :dorm_capacityInput)
+INSERT INTO Dorms (dorm_name, dorm_address, dorm_capacity) VALUES (:dorm_nameInput, :dorm_addressInput, :dorm_capacityInput)
 
 -- add a new Class - add class_id value automatically?
-INSERT INTO Classes (class_id, class_name, department, class_capacity) VALUES (:class_idInput, :class_nameInput, :department_from_dropdown_Input, :class_capacityInput)
+INSERT INTO Classes (class_name, department, class_capacity) VALUES (:class_nameInput, :department_from_dropdown_Input, :class_capacityInput)
 
 -- add a new Student -- add studentv_id value automatically?
-INSERT INTO Students (student_id, fname, lname, email, gpa, dorm_id, major_id) VALUES (:student_idInput, :fnameInput, :lnameInput, :emailInput, :gpaInput, :dorm_id_from_dropdown_Input, :major_id_from_dropdown_Input)
+INSERT INTO Students (fname, lname, email, gpa, dorm_id, major_id) VALUES (:fnameInput, :lnameInput, :emailInput, :gpaInput, :dorm_id_from_dropdown_Input, :major_id_from_dropdown_Input)
 
 -- add a new Registration, associate a Student with classes (M-to-M relationship addition)
 INSERT INTO Registration (student_id, cid1, cid2, cid3, cid4, cid5) VALUES (:student_idInput, :cid1Input, :cid2Input, :cid3Input, :cid4Input, :cid5Input)

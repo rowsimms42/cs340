@@ -124,7 +124,7 @@ DROP TABLE IF EXISTS `Dorms`;
 CREATE TABLE `Dorms` (
   `dorm_id` int(11) UNIQUE NOT NULL AUTO_INCREMENT,
   `dorm_name` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `dorm_address` varchar(255) NOT NULL,
   `dorm_capacity` int(11) NOT NULL,
   PRIMARY KEY (`dorm_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;

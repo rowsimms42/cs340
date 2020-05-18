@@ -18,7 +18,7 @@ SELECT student_id, fname, lname, email, gpa, major_id, dorm_id FROM Students
 SELECT major_id, major_name, dept_chair, required_units FROM Majors
 
 -- get all Dorms to list on the Dorms page
-SELECT dorm_id, dorm_name, address, dorm_capacity FROM Dorms
+SELECT dorm_id, dorm_name, dorm_address, dorm_capacity FROM Dorms
 
 -- get all Classes to list on the Classes page
 SELECT class_id, class_name, department, class_capacity FROM Classes
@@ -33,7 +33,7 @@ SELECT student_id, fname, lname, email, gpa, major_id, dorm_id FROM Students WHE
 SELECT major_id, major_name, dept_chair, required_units FROM Majors WHERE major_id = :major_ID_selected_from_majors_page
 
 -- get a single Dorm's data for Update Dorms form
-SELECT dorm_id, dorm_name, address, dorm_capacity FROM Dorms WHERE dorm_id = :dorm_ID_selected_from_dorms_page
+SELECT dorm_id, dorm_name, dorm_address, dorm_capacity FROM Dorms WHERE dorm_id = :dorm_ID_selected_from_dorms_page
 
 -- get a single Class's data for Update Classes form
 SELECT class_id, class_name, department, class_capacity FROM Classes WHERE class_id = :class_ID_selected_from_classes_page
@@ -45,7 +45,7 @@ SELECT student_id, cid1, cid2, cid3, cid4, cid5 FROM Registration WHERE student_
 INSERT INTO Majors (major_id, major_name, dept_chair, required_units) VALUES (:major_idInput, :major_nameInput, :dept_chairInput, :required_unitsInput)
 
 -- add a new Dorm
-INSERT INTO Dorms (dorm_id, dorm_name, address, dorm_capacity) VALUES (:dorm_idInput, :dorm_nameInput, :addressInput, :dorm_capacityInput)
+INSERT INTO Dorms (dorm_id, dorm_name, dorm_address, dorm_capacity) VALUES (:dorm_idInput, :dorm_nameInput, :dorm_addressInput, :dorm_capacityInput)
 
 -- add a new Class
 INSERT INTO Classes (class_id, class_name, department, class_capacity) VALUES (:class_idInput, :class_nameInput, :department_from_dropdown_Input, :class_capacityInput)
@@ -63,7 +63,7 @@ UPDATE Students SET fname = :fnameInput, lname= :lnameInput, email = :emailInput
 UPDATE Majors SET major_name = :major_nameInput, dept_chair = :dept_chairInput, required_units = :required_unitsInput WHERE major_id= :major_ID_selected_from_majors_page
 
 -- update a Dorm's data based on submission of the Update Dorm form 
-UPDATE Dorms SET dorm_name = :dorm_nameInput, address = :addressInput, dorm_capacity = :dorm_capacityInput WHERE dorm_id= :dorm_ID_selected_from_dorms_page
+UPDATE Dorms SET dorm_name = :dorm_nameInput, dorm_address = :dorm_addressInput, dorm_capacity = :dorm_capacityInput WHERE dorm_id= :dorm_ID_selected_from_dorms_page
 
 -- update a Class' data based on submission of the Update Class form 
 UPDATE Classes SET class_name = :class_nameInput, department = :department_from_dropdown_Input, class_capacity = :class_capacityInput WHERE class_id= :class_ID_selected_from_classes_page

@@ -34,7 +34,7 @@ CREATE TABLE `Students` (
   CONSTRAINT `Students_ibfk_1` 
   FOREIGN KEY (`major_id`) REFERENCES `Majors` (`major_id`),
   CONSTRAINT `Students_ibfk_2` 
-  FOREIGN KEY (`dorm_id`) REFERENCES `Dorms` (`dorm_id`),
+  FOREIGN KEY (`dorm_id`) REFERENCES `Dorms` (`dorm_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,15 +42,17 @@ CREATE TABLE `Students` (
 -- Dumping data for table `Students`
 --
 
+ALTER TABLE Students AUTO_INCREMENT=40100;
+
 LOCK TABLES `Students` WRITE;
 /*!40000 ALTER TABLE `Students` DISABLE KEYS */;
-INSERT INTO `Students` VALUES (43920,'Jimmy', 'Smith', 'jsmith@school.edu',3.5,145,1120),
-(43922,'Sarah', 'Johnson', 'sjohnson@school.edu',3.7,NULL,1120),
-(43924,'Sam', 'Hunter', 'shunter@school.edu',3.2,146,1121),
-(43926,'Ryan', 'Brown', 'rborwn@school.edu',4.0,144,1121),
-(43928,'Eli', 'Gold', 'egold@school.edu',3.8,147,1123),
-(43930,'Jane', 'Doe', 'jdoe@school.edu',2.8,146,1122),
-(43932,'Steve', 'Winter', 'swinter@school.edu',2.2,147,1124);
+INSERT INTO `Students` VALUES (NULL,'Jimmy', 'Smith', 'jsmith@school.edu',3.5,145,1120),
+(NULL,'Sarah', 'Johnson', 'sjohnson@school.edu',3.7,NULL,1120),
+(NULL,'Sam', 'Hunter', 'shunter@school.edu',3.2,146,1121),
+(NULL,'Ryan', 'Brown', 'rborwn@school.edu',4.0,144,1121),
+(NULL,'Eli', 'Gold', 'egold@school.edu',3.8,147,1123),
+(NULL,'Jane', 'Doe', 'jdoe@school.edu',2.8,146,1122),
+(NULL,'Steve', 'Winter', 'swinter@school.edu',2.2,147,1124);
 /*!40000 ALTER TABLE `Students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,12 +76,14 @@ CREATE TABLE `Majors` (
 -- Dumping data for table `Majors`
 --
 
+ALTER TABLE Majors AUTO_INCREMENT=145;
+
 LOCK TABLES `Majors` WRITE;
 /*!40000 ALTER TABLE `Majors` DISABLE KEYS */;
-INSERT INTO `Majors` VALUES (144,'Computer Science', 'Mike Matthews', 60),
-(145,'Biology', 'James Jones', 55),
-(146,'English', 'Hailey Potter', 50),
-(147,'International Relations', 'Brian Best', 56);
+INSERT INTO `Majors` VALUES (NULL,'Computer Science', 'Mike Matthews', 60),
+(NULL,'Biology', 'James Jones', 55),
+(NULL,'English', 'Hailey Potter', 50),
+(NULL,'International Relations', 'Brian Best', 56);
 /*!40000 ALTER TABLE `Majors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,14 +107,16 @@ CREATE TABLE `Classes` (
 -- Dumping data for table `Classes`
 --
 
+ALTER TABLE Classes AUTO_INCREMENT=222101;
+
 LOCK TABLES `Classes` WRITE;
 /*!40000 ALTER TABLE `Classes` DISABLE KEYS */;
-INSERT INTO `Classes` VALUES (54101,'Underwater Basket Weaving','English', 40),
-(55200,'Study of Hemingway','English', 30),
-(33200,'Intro to Databases','Computer Science', 200),
-(33225,'Algorithms','Computer Science', 200),
-(50300,'Jousting','International Relations', 40),
-(36200,'Exercise Physiology','Biology', 50);
+INSERT INTO `Classes` VALUES (NULL,'Underwater Basket Weaving','English', 40),
+(NULL,'Study of Hemingway','English', 30),
+(NULL,'Intro to Databases','Computer Science', 200),
+(NULL,'Algorithms','Computer Science', 200),
+(NULL,'Jousting','International Relations', 40),
+(NULL,'Exercise Physiology','Biology', 50);
 /*!40000 ALTER TABLE `Classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,13 +140,15 @@ CREATE TABLE `Dorms` (
 -- Dumping data for table `Dorms`
 --
 
+ALTER TABLE Dorms AUTO_INCREMENT=1120;
+
 LOCK TABLES `Dorms` WRITE;
 /*!40000 ALTER TABLE `Dorms` DISABLE KEYS */;
-INSERT INTO `Dorms` VALUES (1120,'Ponderosa','245 Freshman Lane', 80),
-(1121,'Juniper','265 Freshman Lane', 120),
-(1122,'Evergreen','150 Softmore Road', 100),
-(1123,'Oakwood','99 Junior Avenue', 100),
-(1124,'Monterrey','140 Senior Place', 90);
+INSERT INTO `Dorms` VALUES (NULL,'Ponderosa','245 Freshman Lane', 80),
+(NULL,'Juniper','265 Freshman Lane', 120),
+(NULL,'Evergreen','150 Softmore Road', 100),
+(NULL,'Oakwood','99 Junior Avenue', 100),
+(NULL,'Monterrey','140 Senior Place', 90);
 /*!40000 ALTER TABLE `Dorms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,11 +183,11 @@ CREATE TABLE `Registration` (
 
 LOCK TABLES `Registration` WRITE;
 /*!40000 ALTER TABLE `Registration` DISABLE KEYS */;
-INSERT INTO `Registration` VALUES (43922,33200,36200,55200,54101,NULL),
-(43924,55200,33225, 50300, NULL, NULL),
-(43926,50300,33225,54101, NULL, NULL),
-(43928,54101,55200,33200, NULL, NULL),
-(43930,54101,33225,36200,33200,55200);
+INSERT INTO `Registration` VALUES (40100,222102,222103,222105,222106,NULL),
+(40101,222101,222103,222104, NULL, NULL),
+(40102,222101,222105,222106, NULL, NULL),
+(40103,222102,222104,222105, NULL, NULL),
+(40104,222101,222102,222103,222105,222106);
 /*!40000 ALTER TABLE `Registration` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

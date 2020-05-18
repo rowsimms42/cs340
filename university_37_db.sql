@@ -28,7 +28,7 @@ CREATE TABLE `Students` (
   `student_lname` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `gpa` float(49) DEFAULT NULL,
-  `major_id` int(11) NOT NULL,
+  `major_id` int(11),
   `dorm_id` int(11) NOT NULL,
   PRIMARY KEY (`student_id`),
   CONSTRAINT `Students_ibfk_1` 
@@ -45,7 +45,7 @@ CREATE TABLE `Students` (
 LOCK TABLES `Students` WRITE;
 /*!40000 ALTER TABLE `Students` DISABLE KEYS */;
 INSERT INTO `Students` VALUES (43920,'Jimmy', 'Smith', 'jsmith@school.edu',3.5,145,1120),
-(43922,'Sarah', 'Johnson', 'sjohnson@school.edu',3.7,145,1120),
+(43922,'Sarah', 'Johnson', 'sjohnson@school.edu',3.7,NULL,1120),
 (43924,'Sam', 'Hunter', 'shunter@school.edu',3.2,146,1121),
 (43926,'Ryan', 'Brown', 'rborwn@school.edu',4.0,144,1121),
 (43928,'Eli', 'Gold', 'egold@school.edu',3.8,147,1123),
@@ -146,6 +146,7 @@ UNLOCK TABLES;
 
 --
 -- Table structure for table `Registration`
+-- Students allowed up to 5 classes.  NULL value is no class
 --
 
 DROP TABLE IF EXISTS `Registration`;
@@ -175,10 +176,10 @@ CREATE TABLE `Registration` (
 
 LOCK TABLES `Registration` WRITE;
 /*!40000 ALTER TABLE `Registration` DISABLE KEYS */;
-INSERT INTO `Registration` VALUES (43922,33200,36200,55200,54101,0),
-(43924,55200,33225, 50300, 0, 0),
-(43926,50300,33225,54101, 0, 0),
-(43928,54101,55200,33200, 0, 0),
+INSERT INTO `Registration` VALUES (43922,33200,36200,55200,54101,NULL),
+(43924,55200,33225, 50300, NULL, NULL),
+(43926,50300,33225,54101, NULL, NULL),
+(43928,54101,55200,33200, NULL, NULL),
 (43930,54101,33225,36200,33200,55200);
 /*!40000 ALTER TABLE `Registration` ENABLE KEYS */;
 UNLOCK TABLES;

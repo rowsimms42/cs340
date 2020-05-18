@@ -34,7 +34,7 @@ CREATE TABLE `Students` (
   CONSTRAINT `Students_ibfk_1` 
   FOREIGN KEY (`major_id`) REFERENCES `Majors` (`major_id`),
   CONSTRAINT `Students_ibfk_2` 
-  FOREIGN KEY (`dorm_id`) REFERENCES `Dorms` (`dorm_id`)
+  FOREIGN KEY (`dorm_id`) REFERENCES `Dorms` (`dorm_id`),
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -153,15 +153,14 @@ DROP TABLE IF EXISTS `Registration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Registration` (
-  `sid` int(11) NOT NULL DEFAULT '0',
-  `cid1` int(11) NOT NULL DEFAULT '0',
-  `cid2` int(11) DEFAULT '0',
-  `cid3` int(11) DEFAULT '0',
-  `cid4` int(11) DEFAULT '0',
-  `cid5` int(11) DEFAULT '0',
-  PRIMARY KEY (`cid1`,`sid`),
-  KEY `sid` (`sid`),
-  CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `Students` (`student_id`),
+  `student_id` int(11) NOT NULL UNIQUE,
+  `cid1` int(11) NOT NULL,
+  `cid2` int(11) DEFAULT NULL,
+  `cid3` int(11) DEFAULT NULL,
+  `cid4` int(11) DEFAULT NULL,
+  `cid5` int(11) DEFAULT NULL,
+  PRIMARY KEY (`student_id`),
+  CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`),
   CONSTRAINT `Registration_ibfk_2` FOREIGN KEY (`cid1`) REFERENCES `Classes` (`class_id`),
   CONSTRAINT `Registration_ibfk_3` FOREIGN KEY (`cid2`) REFERENCES `Classes` (`class_id`),
   CONSTRAINT `Registration_ibfk_4` FOREIGN KEY (`cid3`) REFERENCES `Classes` (`class_id`),

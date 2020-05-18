@@ -49,7 +49,7 @@ LOCK TABLES `Students` WRITE;
 INSERT INTO `Students` VALUES (NULL,'Jimmy', 'Smith', 'jsmith@school.edu',3.5,145,1120),
 (NULL,'Sarah', 'Johnson', 'sjohnson@school.edu',3.7,NULL,1120),
 (NULL,'Sam', 'Hunter', 'shunter@school.edu',3.2,146,1121),
-(NULL,'Ryan', 'Brown', 'rborwn@school.edu',4.0,144,1121),
+(NULL,'Ryan', 'Brown', 'rborwn@school.edu',4.0,148,1121),
 (NULL,'Eli', 'Gold', 'egold@school.edu',3.8,147,1123),
 (NULL,'Jane', 'Doe', 'jdoe@school.edu',2.8,146,1122),
 (NULL,'Steve', 'Winter', 'swinter@school.edu',2.2,147,1124);

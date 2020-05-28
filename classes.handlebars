@@ -1,0 +1,58 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registration">Registration</a>
+</header>
+
+<section>
+<div class = "table">
+<form id="addClass" action="/majors" method="post">
+<div class = "header">
+	<p>Add class:</p>	
+	</div>
+			<table>
+			<tr>
+				<td>Class Name: <input type="text" id="class_name" 
+				name="class_name"></td>
+			</tr>
+			<tr>
+				<td>Department: <input type="text" id="department" name="department"></td>
+			</tr>
+			<tr>
+				<td>Class Capacity: <input type="text" id="class_capacity" name="class_capacity"></td>
+			</tr>
+				<td><input type="button" id="Submit" value = "Submit"></td>
+			</tr>
+			</table>
+		</form>
+	</div>
+
+	<table>>
+		<thead>
+		<table id = "t2">
+			<tr>
+				<th>Class ID</th>
+				<th>Class Name</th>
+				<th>Department</th>
+				<th>Class Capacity</th>
+				<th>Update</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each classes}}
+			<tr>
+				<td>{{class_id}}</td>
+				<td>{{class_name}}</td>
+				<td>{{department}}</td>
+				<td>{{class_capacity}}</td>
+				<td><a href="/update">Update</a></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

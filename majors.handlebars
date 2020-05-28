@@ -1,0 +1,60 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registration">Registration</a>
+</header>
+
+<section>
+<div class = "table">
+	<div class = "header">
+	<p>Add major:</p>
+	</div>	
+		<form id="addMajor" action="/majors" method="post">
+			<table>
+			<tr>
+				<td>Major Name: <input type="text" id="major_name" 
+				name="major_name"></td>
+			</tr>
+			<tr>
+				<td>Department Chair: <input type="text" id="dept_chair" name="dept_chair"></td>
+			</tr>
+			<tr>
+				<td>Required Units: <input type="text" id="required_units" name="required_units"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" id="Submit" value = "Submit"></td>
+			</tr>	
+		</form>
+		</table>
+	</div>
+
+	<table>
+		<caption>Majors</caption>
+		<thead>
+		<table id = "t2">
+			<tr>
+				<th>Major ID</th>
+				<th>Major Name</th>
+				<th>Department Chair</th>
+				<th>Required Units</th>
+				<th>Update</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each majors}}
+			<tr>
+				<td>{{major_id}}</td>
+				<td>{{major_name}}</td>
+				<td>{{dept_chair}}</td>
+				<td>{{required_units}}</td>
+				<td><a href="/update">Update</a></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

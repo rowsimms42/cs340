@@ -1,0 +1,76 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registration">Registration</a>
+</header>
+
+<section>
+	<div class = "table">
+	<div class = "header">
+    <p>Add student:</p>
+    </div>
+    	<form id="addStudent" action="/students" method="post">
+
+    	<table>
+        <tr>
+            <td>First Name:</td>
+            <td><input type="text" id="student_fname" name="student_fname"></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input type="text" id="student_lname" name="student_lname"></td>
+          </tr>
+          <tr>
+              <td>Email:</td>
+            <td><input type="text" id="email" name="email"></td>
+          </tr>
+          <tr>
+            <td>GPA:</td>
+            <td><input type="text" id="gpa" name="gpa"></td>
+          </tr>
+          <tr>
+            <td><input type="button" id="Submit" value="Submit"></td>
+        </tr>
+          </form>
+    </table>
+<br>
+<br>
+    	
+<table>
+		<caption>Students<caption>
+		<thead>
+		<table id = "t2">
+			<tr>
+				<th>Student ID</th>
+				<th>Major ID</th>
+				<th>Dorm ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>GPA</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each students}}
+			<tr>
+				<td>{{student_id}}</td>
+				<td>{{major_id}}</td>
+				<td>{{dorm_id}}</td>
+				<td>{{student_fname}}</td>
+				<td>{{student_lname}}</td>
+				<td>{{email}}</td>
+				<td>{{gpa}}</td>
+				<td><a href="/update">Update</a></td>
+				<td><button type="delete" id="studentDelete">Delete</button></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

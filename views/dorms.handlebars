@@ -10,7 +10,7 @@
 
 <section>
 <div class = "table">
-<form id="addDorm" action="/dorms" method="post">
+<form id="adddorm" action="/dorms" method="post">
 <div class = "header">
 	<p>Add dorm:</p>	
 	</div>
@@ -54,7 +54,7 @@
 				<td>{{dorm_name}}</td>
 				<td>{{dorm_address}}</td>
 				<td>{{dorm_capacity}}</td>
-				<td><a href="/update">Update</a></td>
+				<td><a href="/dorms/{{dorm_id}}">Update</a></td>
 			</tr>
 			{{/each}}
 		</tbody>

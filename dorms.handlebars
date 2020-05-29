@@ -1,0 +1,62 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registration">Registration</a>
+</header>
+
+<section>
+<div class = "table">
+<form id="adddorm" action="/dorms" method="post">
+<div class = "header">
+	<p>Add dorm:</p>	
+	</div>
+			<table>
+			<tr>
+				<td>Dorm Name: </td>
+				<td><input type="text" id="dorm_name" name="dorm_name"></td>
+			</tr>
+			<tr>
+				<td>Address: </td>
+				<td><input type="text" id="dorm_address" name="dorm_address"></td>
+			</tr>
+			<tr>
+				<td>Dorm Capacity: </td>
+				<td><input type="text" id="dorm_capacity" name="dorm_capacity"></td>
+			</tr>
+				<td><input type="submit" id="Submit" value = "Submit"></td>
+			</tr>
+			</table>
+		</form>
+	</div>
+<br>
+<br>
+	<table>
+
+		<thead>
+		<table id = "t2">
+			<tr>
+				<th>Dorm ID</th>
+				<th>Dorm Name</th>
+				<th>Address</th>
+				<th>Dorm Capacity</th>
+				<th>Update</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each dorms}}
+			<tr>
+				<td>{{dorm_id}}</td>
+				<td>{{dorm_name}}</td>
+				<td>{{dorm_address}}</td>
+				<td>{{dorm_capacity}}</td>
+				<td><a href="/dorms/{{dorm_id}}">Update</a></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

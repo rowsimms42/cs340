@@ -1,0 +1,22 @@
+<h1>Update {{student.student_fname}} {{student.student_lname}}:</h1>
+<form id="update-student" action="/students" method="post">
+    First name: <input type="text" name="student_fname"><br>
+    Last name: <input type="text" name="student_lname"><br>
+    Dorm: <select name="dorm_id" id="dorm-selector"> 
+        {{#each dorms}}
+        <option value="{{dorm_id}}">{{dorm_name}}</option>
+        {{/each}}
+    </select><br>
+    Major: <select name="major_id" id-"major-selector"> 
+        <option value=NULL>No Major</option>
+        {{#each majors}}
+        <option value="{{major_id}}">{{major_name}}</option>
+        {{/each}}
+    </select><br>
+    Email: <input type="text" name="email"><br>
+    GPA: <input type="number" name="gpa"><br>
+    <input type="submit" value="Submit">
+</form>
+<button onclick="updateStudent({{student.student_id}})">Update</button>
+<script defer>selectDorm({{student.dorm_id}});</script>
+<script defer>selectMajor({{student.major_id}});</script>

@@ -8,37 +8,7 @@
 			<a href="/registration">Registration</a>
 </header>
 
-<section>
-	<div class = "table">
-	<div class = "header">
-    <p>Add student:</p>
-    </div>
-    	<form id="addStudent" action="/students" method="post">
-
-    	<table>
-        <tr>
-            <td>First Name:</td>
-            <td><input type="text" id="student_fname" name="student_fname"></td>
-        </tr>
-        <tr>
-            <td>Last Name:</td>
-            <td><input type="text" id="student_lname" name="student_lname"></td>
-          </tr>
-          <tr>
-              <td>Email:</td>
-            <td><input type="text" id="email" name="email"></td>
-          </tr>
-          <tr>
-            <td>GPA:</td>
-            <td><input type="text" id="gpa" name="gpa"></td>
-          </tr>
-          <tr>
-            <td><input type="submit" id="Submit" value="Submit"></td>
-        </tr>
-          </form>
-    </table>
-<br>
-<br>
+<h1>Current Students</h1>
     	
 <table>
 		<caption>Students<caption>
@@ -67,10 +37,29 @@
 				<td>{{student_lname}}</td>
 				<td>{{email}}</td>
 				<td>{{gpa}}</td>
-				<td><a href="/update">Update</a></td>
-				<td><button type="delete" id="studentDelete">Delete</button></td>
+           		<td><a href="/students/{{id}}">Update</a></td>
+				<td><button onclick="deleteStudent({{id}})">Delete</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
+
+		<form id="addstudent" action="/students" method="post">
+    		First name: <input type="text" name="student_fname"><br>
+    		Last name: <input type="text" name="student_lname"><br>
+    		Dorm: <select name="dorm_id"> 
+        		{{#each dorms}}
+        		<option value="{{dorm_id}}">{{dorm_name}}</option>
+        		{{/each}}
+    		</select><br>
+			Major: <select name="major_id"> 
+				<option value=NULL>No Major</option>
+        		{{#each majors}}
+        		<option value="{{major_id}}">{{major_name}}</option>
+        		{{/each}}
+    		</select><br>
+    		Email: <input type="text" name="email"><br>
+			GPA: <input type="number" name="gpa"><br>
+    		<input type="submit" value="Submit">
+    	</form>
 	</table>
 </section>

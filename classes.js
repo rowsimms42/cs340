@@ -81,7 +81,7 @@ module.exports = function(){
     router.put('/:class_id', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Classes SET class_name=?, department=?, class_capacity=? WHERE class_id=?";
-        var inserts = [req.body.class_name, req.body.department_name, req.body.class_capacity, req.params.class_id];
+        var inserts = [req.body.class_name, req.body.department, req.body.class_capacity, req.params.class_id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));

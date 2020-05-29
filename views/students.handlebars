@@ -8,9 +8,55 @@
 			<a href="/registration">Registration</a>
 </header>
 
-<h1>Current Students</h1>
+<section>
+<div student = "table">
+<form id="addstudent" action="/students" method="post">
+<div student = "header">
+	<p>Add student:</p>	
+	</div>
+			<table>
+			<tr>
+				<td>Student First Name: </td>
+				<td><input type="text" id="student_fname" name="student_fname"></td>
+			</tr>
+			<tr>
+				<td>Student Last Name: </td>
+				<td><input type="text" id="student_lname" name="student_lname"></td>
+			</tr>
+			<tr>
+				<td>Email: </td>
+				<td><input type="text" id="email" name="email"></td>
+			</tr>
+			<tr>
+				<td>GPA: </td>
+				<td><input type="number" id="gpa" name="gpa"></td>
+			<tr>
+				<td>Dorm: </td>
+				<td><select name="dorm_id"> 
+        			{{#each dorms}}
+        			<option value="{{dorm_id}}">{{dorm_name}}</option>
+        			{{/each}}
+    				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Major: </td>
+				<td><select name="major_id"> 
+					<option value=NULL>No Major</option>
+        			{{#each majors}}
+        			<option value="{{major_id}}">{{major_name}}</option>
+        			{{/each}}
+    				</select>
+				</td>
+			</tr>
+			</tr>
+				<td><input type="submit" id="Submit" value = "Submit"></td>
+			</tr>
+			</table>
+		</form>
+	</div>
     	
-<table>
+	<table>
 		<caption>Students<caption>
 		<thead>
 		<table id = "t2">
@@ -37,29 +83,10 @@
 				<td>{{student_lname}}</td>
 				<td>{{email}}</td>
 				<td>{{gpa}}</td>
-           			<td><a href="/students/{{id}}">Update</a></td>
+           		<td><a href="/students/{{id}}">Update</a></td>
 				<td><button onclick="deleteStudent({{id}})">Delete</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
-
-		<form id="addstudent" action="/students" method="post">
-    		First name: <input type="text" name="student_fname"><br>
-    		Last name: <input type="text" name="student_lname"><br>
-    		Dorm: <select name="dorm_id"> 
-        		{{#each dorms}}
-        		<option value="{{dorm_id}}">{{dorm_name}}</option>
-        		{{/each}}
-    		</select><br>
-			Major: <select name="major_id"> 
-				<option value=NULL>No Major</option>
-        		{{#each majors}}
-        		<option value="{{major_id}}">{{major_name}}</option>
-        		{{/each}}
-    		</select><br>
-    		Email: <input type="text" name="email"><br>
-			GPA: <input type="number" name="gpa"><br>
-    		<input type="submit" value="Submit">
-    	</form>
 	</table>
 </section>

@@ -16,7 +16,7 @@ app.use('/', express.static('public'));
 app.use('/students', require('./students.js'));
 app.use('/majors', require('./majors.js'));
 app.use('/classes', require('./classes.js'));
-app.use('/dorms', require('.dorms.js'));
+app.use('/dorms', require('./dorms.js'));
 
 app.get('/', function(req, res){
 	res.render("home");

@@ -53,7 +53,7 @@ module.exports = function(){
     router.get('/', function(req, res){
     	var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteperson.js"];
+        context.jsscripts = ["deletestudent.js"];
         var mysql = req.app.get('mysql');
         getStudents(res, mysql, context, complete);
         getDorms(res, mysql, context, complete);
@@ -71,7 +71,7 @@ module.exports = function(){
     router.get('/:student_id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["selecteddorm.js", "updatestudent.js"];
+        context.jsscripts = ["selecteddorm.js", "selectedmajor.js", "updatestudent.js"];
         var mysql = req.app.get('mysql');
         getStudent(res, mysql, context, req.params.id, complete);
         getDorms(res, mysql, context, complete);
@@ -92,7 +92,7 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Students (student_fname, student_lname, email, gpa, major_id, dorm_id) VALUES (?,?,?,?,?,?)";
         if (req.body.major_id == "NULL"){
-            req.body.major_id = null
+            req.body.major_id = null;
         }
         var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.major_id, req.body.dorm_id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
@@ -112,7 +112,7 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Students SET student_fname=?, student_lname=?, email=?, gpa=?, major_id=?, dorm_id=? WHERE student_id=?";
         if (req.body.major_id == "NULL"){
-            req.body.major_id = null
+            req.body.major_id = null;
         }
         var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.major_id, req.body.dorm_id, req.params.student_id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){

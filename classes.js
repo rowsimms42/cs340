@@ -51,7 +51,7 @@ module.exports = function(){
         getClass(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 3){
+            if(callbackCount >= 1){
                 res.render('update-class', context);
             }
 

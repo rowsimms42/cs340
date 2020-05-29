@@ -85,7 +85,7 @@ module.exports = function(){
         }
     });
 
-    /* Adds a student, redirects to the people page after adding */
+    /* Adds a student, redirects to the students page after adding */
 
     router.post('/', function(req, res){
         console.log(req.body)

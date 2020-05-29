@@ -1,0 +1,33 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registration">Registration</a>
+</header>
+
+<section>
+<div class = "table">
+<form id="addclass" action="/classes" method="post">
+<div class = "header">
+	<p>Update {{class.class_name}}:</p>	
+	</div>
+			<table>
+			<tr>
+				<td>Class Name: </td>
+				<td><input type="text" id="class_name" name="class_name"></td>
+			</tr>
+			<tr>
+				<td>Department: </td>
+				<td><input type="text" id="department" name="department"></td>
+			</tr>
+			<tr>
+				<td>Class Capacity: </td>
+				<td><input type="number" id="class_capacity" name="class_capacity"></td>
+			</tr>
+			</table>
+		</form>
+        <button onclick="updateClass({{class.class_id}})">Update</button>
+	</div>

@@ -2,6 +2,28 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+    function getDorms(res, mysql, context, complete){
+        mysql.pool.query("SELECT dorm_id, dorm_name FROM Dorms", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.dorms  = results;
+            complete();
+        });
+    }
+
+    function getMajors(res, mysql, context, complete){
+        mysql.pool.query("SELECT major_id, major_name FROM Majors", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.majors  = results;
+            complete();
+        });
+    }
+    
     function getStudents(res, mysql, context, complete){
         mysql.pool.query("SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students", function(error, results, fields){
             if(error){
@@ -13,37 +35,66 @@ module.exports = function(){
         });
     }
 
-    function getStudent(res, mysql, context, id, complete){
-        var sql = "SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students WHERE student_id = :student_ID_selected_from_students_page";
+    function getStudent(res, mysql, context, student_id, complete){
+        var sql = "SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students WHERE student_id = ?";
         var inserts = [student_id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.students = results[0];
+            context.student = results[0];
             complete();
         });
     }
 
+    /*Display all students. Requires web based javascript to delete users with AJAX*/
+
     router.get('/', function(req, res){
     	var callbackCount = 0;
         var context = {};
+        context.jsscripts = ["deleteperson.js"];
         var mysql = req.app.get('mysql');
         getStudents(res, mysql, context, complete);
+        getDorms(res, mysql, context, complete);
+        getMajors(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 1){
+            if(callbackCount >= 3){
                 res.render('students', context);
             }
         }
     });
 
-router.post('/', function(req, res){
+    /* Display one student for the specific purpose of updating students */
+
+    router.get('/:student_id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["selecteddorm.js", "updatestudent.js"];
+        var mysql = req.app.get('mysql');
+        getStudent(res, mysql, context, req.params.id, complete);
+        getDorms(res, mysql, context, complete);
+        getMajors(res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 3){
+                res.render('update-student', context);
+            }
+
+        }
+    });
+
+    /* Adds a student, redirects to the people page after adding */
+
+    router.post('/', function(req, res){
         console.log(req.body)
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO Students (student_fname, student_lname, email, gpa, dorm_id, major_id) VALUES (?,?,?,?,?,?)";
-        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.dorm_id, req.body.major_id];
+        var sql = "INSERT INTO Students (student_fname, student_lname, email, gpa, major_id, dorm_id) VALUES (?,?,?,?,?,?)";
+        if (req.body.major_id == "NULL"){
+            req.body.major_id = null
+        }
+        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.major_id, req.body.dorm_id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -53,6 +104,45 @@ router.post('/', function(req, res){
                 res.redirect('/students');
             }
         });
-});
+    });
+    
+    /* The URI that update data is sent to in order to update a student */
+
+    router.put('/:student_id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "UPDATE Students SET student_fname=?, student_lname=?, email=?, gpa=?, major_id=?, dorm_id=? WHERE student_id=?";
+        if (req.body.major_id == "NULL"){
+            req.body.major_id = null
+        }
+        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.major_id, req.body.dorm_id, req.params.student_id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
+
+    /* Route to delete a student, simply returns a 202 upon success. Ajax will handle this. */
+
+    router.delete('/:student_id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM Students WHERE student_id=?";
+        var inserts = [req.params.student_id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    })
+
     return router;
+
 }();

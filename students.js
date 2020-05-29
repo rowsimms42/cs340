@@ -2,7 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-    function getDorms(res, mysql, context, complete){
+    function getDormsStudents(res, mysql, context, complete){
         mysql.pool.query("SELECT dorm_id, dorm_name FROM Dorms", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
@@ -13,7 +13,7 @@ module.exports = function(){
         });
     }
 
-    function getMajors(res, mysql, context, complete){
+    function getMajorsStudents(res, mysql, context, complete){
         mysql.pool.query("SELECT major_id, major_name FROM Majors", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
@@ -56,8 +56,8 @@ module.exports = function(){
         context.jsscripts = ["deletestudent.js"];
         var mysql = req.app.get('mysql');
         getStudents(res, mysql, context, complete);
-        getDorms(res, mysql, context, complete);
-        getMajors(res, mysql, context, complete);
+        getDormsStudents(res, mysql, context, complete);
+        getMajorsStudents(res, mysql, context, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 3){
@@ -74,8 +74,8 @@ module.exports = function(){
         context.jsscripts = ["selecteddorm.js", "selectedmajor.js", "updatestudent.js"];
         var mysql = req.app.get('mysql');
         getStudent(res, mysql, context, req.params.id, complete);
-        getDorms(res, mysql, context, complete);
-        getMajors(res, mysql, context, complete);
+        getDormsStudents(res, mysql, context, complete);
+        getMajorsStudents(res, mysql, context, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 3){

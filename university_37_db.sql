@@ -153,27 +153,20 @@ INSERT INTO `Dorms` VALUES (NULL,'Ponderosa','245 Freshman Lane', 80),
 UNLOCK TABLES;
 
 --
--- Table structure for table `Registration`
+-- Table structure for table `Registrations`
 -- Students allowed up to 5 classes.  NULL value is no class
 --
 
-DROP TABLE IF EXISTS `Registration`;
+DROP TABLE IF EXISTS `Registrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Registration` (
-  `student_id` int(11) NOT NULL UNIQUE,
-  `cid1` int(11) NOT NULL,
-  `cid2` int(11) DEFAULT NULL,
-  `cid3` int(11) DEFAULT NULL,
-  `cid4` int(11) DEFAULT NULL,
-  `cid5` int(11) DEFAULT NULL,
+CREATE TABLE `Registrations` (
+  `registration_id` int(11) UNIQUE NOT NULL AUTO_INCREMENT,
+  `reg_student_id` int(11) NOT NULL,
+  `reg_class_id` int(11) NOT NULL,
   PRIMARY KEY (`student_id`),
-  CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`),
-  CONSTRAINT `Registration_ibfk_2` FOREIGN KEY (`cid1`) REFERENCES `Classes` (`class_id`),
-  CONSTRAINT `Registration_ibfk_3` FOREIGN KEY (`cid2`) REFERENCES `Classes` (`class_id`),
-  CONSTRAINT `Registration_ibfk_4` FOREIGN KEY (`cid3`) REFERENCES `Classes` (`class_id`),
-  CONSTRAINT `Registration_ibfk_5` FOREIGN KEY (`cid4`) REFERENCES `Classes` (`class_id`),
-  CONSTRAINT `Registration_ibfk_6` FOREIGN KEY (`cid5`) REFERENCES `Classes` (`class_id`)
+  CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`reg_student_id`) REFERENCES `Students` (`student_id`),
+  CONSTRAINT `Registration_ibfk_2` FOREIGN KEY (`reg_class_id`) REFERENCES `Classes` (`class_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -181,13 +174,20 @@ CREATE TABLE `Registration` (
 -- Dumping data for table `Registration`
 --
 
+ALTER TABLE Registrations AUTO_INCREMENT=4411220;
+
 LOCK TABLES `Registration` WRITE;
 /*!40000 ALTER TABLE `Registration` DISABLE KEYS */;
-INSERT INTO `Registration` VALUES (40100,222102,222103,222105,222106,NULL),
-(40101,222101,222103,222104, NULL, NULL),
-(40102,222101,222105,222106, NULL, NULL),
-(40103,222102,222104,222105, NULL, NULL),
-(40104,222101,222102,222103,222105,222106);
+INSERT INTO `Registration` VALUES (NULL,40100,222102),
+(NULL,40101,222101),
+(NULL,40102,222101),
+(NULL,40101,222103),
+(NULL,40102,222104),
+(NULL,40103,222102),
+(NULL,40104,222101),
+(NULL,40102,222103),
+(NULL,40103,222104),
+(NULL,40104,222103);
 /*!40000 ALTER TABLE `Registration` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

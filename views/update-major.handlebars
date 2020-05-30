@@ -1,0 +1,33 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registration">Registration</a>
+</header>
+
+<section>
+<div class = "table">
+<form id="update-major" action="/majors" method="post">
+<div class = "header">
+	<p>Update major: {{major.major_name}}</p>	
+	</div>
+			<table>
+			<tr>
+				<td>Major Name: </td>
+				<td><input type="text" id="major_name" name="major_name"></td>
+			</tr>
+			<tr>
+				<td>Department Chair: </td>
+				<td><input type="text" id="dept_chair" name="dept_chair"></td>
+			</tr>
+			<tr>
+				<td>Required Units: </td>
+				<td><input type="text" id="required_units" name="required_units"></td>
+			</tr>
+			</table>
+		</form>
+        <button onclick="updateMajor({{major.major_id}})">Update</button>
+	</div>

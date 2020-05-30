@@ -5,7 +5,7 @@ module.exports = function(){
     /* Function gets 3 attributes from all rows in Students to populate dropdown for adding registration */
 
     function getStudentRegistrations(res, mysql, context, complete){
-        mysql.pool.query("SELECT student_id, student_fname, student lname FROM Students", function(error, results, fields){
+        mysql.pool.query("SELECT student_id, student_fname, student_lname FROM Students", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();

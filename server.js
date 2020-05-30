@@ -14,9 +14,16 @@ app.use('/static', express.static('public'));
 app.use('/', express.static('public'));
 
 app.use('/students', require('./students.js'));
+app.use('/update-student', require('./students.js'));
 app.use('/majors', require('./majors.js'));
+app.use('/update-major', require('./majors.js'));
 app.use('/classes', require('./classes.js'));
+app.use('/update-class', require('./classes.js'));
 app.use('/dorms', require('./dorms.js'));
+app.use('/update-dorm', require('./dorms.js'));
+app.use('/registrations', require('./registrations.js'));
+app.use('/class-registrations', require('./registrations.js'));
+app.use('/student-registrations', require('./registrations.js'));
 
 app.get('/', function(req, res){
 	res.render("home");

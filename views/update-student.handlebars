@@ -17,23 +17,23 @@
 			<table>
 			<tr>
 				<td>Student First Name: </td>
-				<td><input type="text" id="student_fname" name="student_fname"></td>
+				<td><input type="text" name="student_fname" value="{{student.student_fname}}"></td>
 			</tr>
 			<tr>
 				<td>Student Last Name: </td>
-				<td><input type="text" id="student_lname" name="student_lname"></td>
+				<td><input type="text" name="student_lname" value="{{student.student_lname}}"></td>
 			</tr>
 			<tr>
 				<td>Email: </td>
-				<td><input type="text" id="email" name="email"></td>
+				<td><input type="text" name="email" value="{{student.email}}"></td>
 			</tr>
 			<tr>
 				<td>GPA: </td>
-				<td><input type="number" id="gpa" name="gpa"></td>
+				<td><input type="number" id="gpa" name="gpa" value="{{student.gpa}}"></td>
 			</tr>
 			<tr>
 				<td>Major: </td>
-				<td><select name="major_id" id-"major-selector"> 
+				<td><select name="major_id" id="major-selector"> 
 					<option value=NULL>No Major</option>
         			{{#each majorStudents}}
         			<option value="{{major_id}}">{{major_name}}</option>
@@ -50,11 +50,9 @@
     				</select>
 				</td>
             </tr>
-			<tr>
-				<button onclick="updateStudent({{student.student_id}})">Update</button>
-            </tr>
 			</table>
 		</form>
+		<button onclick="updateStudent({{student.student_id}})">Update</button>
 	</div>
 
 <script defer>selectDorm({{student.dorm_id}});</script>

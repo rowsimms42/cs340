@@ -73,7 +73,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["selecteddorm.js", "selectedmajor.js", "updatestudent.js"];
         var mysql = req.app.get('mysql');
-        getStudent(res, mysql, context, req.params.id, complete);
+        getStudent(res, mysql, context, req.params.student_id, complete);
         getDormsStudents(res, mysql, context, complete);
         getMajorsStudents(res, mysql, context, complete);
         function complete(){

@@ -164,21 +164,21 @@ CREATE TABLE `Registrations` (
   `registration_id` int(11) UNIQUE NOT NULL AUTO_INCREMENT,
   `reg_student_id` int(11) NOT NULL,
   `reg_class_id` int(11) NOT NULL,
-  PRIMARY KEY (`student_id`),
+  PRIMARY KEY (`registration_id`),
   CONSTRAINT `Registration_ibfk_1` FOREIGN KEY (`reg_student_id`) REFERENCES `Students` (`student_id`),
   CONSTRAINT `Registration_ibfk_2` FOREIGN KEY (`reg_class_id`) REFERENCES `Classes` (`class_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Registration`
+-- Dumping data for table `Registrations`
 --
 
 ALTER TABLE Registrations AUTO_INCREMENT=4411220;
 
-LOCK TABLES `Registration` WRITE;
-/*!40000 ALTER TABLE `Registration` DISABLE KEYS */;
-INSERT INTO `Registration` VALUES (NULL,40100,222102),
+LOCK TABLES `Registrations` WRITE;
+/*!40000 ALTER TABLE `Registrations` DISABLE KEYS */;
+INSERT INTO `Registrations` VALUES (NULL,40100,222102),
 (NULL,40101,222101),
 (NULL,40102,222101),
 (NULL,40101,222103),
@@ -188,7 +188,7 @@ INSERT INTO `Registration` VALUES (NULL,40100,222102),
 (NULL,40102,222103),
 (NULL,40103,222104),
 (NULL,40104,222103);
-/*!40000 ALTER TABLE `Registration` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Registrations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

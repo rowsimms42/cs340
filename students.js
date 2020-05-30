@@ -8,7 +8,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.dorms  = results;
+            context.dormStudents  = results;
             complete();
         });
     }
@@ -19,7 +19,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.majors  = results;
+            context.majorStudents  = results;
             complete();
         });
     }
@@ -36,7 +36,7 @@ module.exports = function(){
     }
 
     function getStudent(res, mysql, context, student_id, complete){
-        var sql = "SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students WHERE student_id = ?";
+        var sql = "SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students WHERE student_id=?";
         var inserts = [student_id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -92,9 +92,9 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Students (student_fname, student_lname, email, gpa, major_id, dorm_id) VALUES (?,?,?,?,?,?)";
         if (req.body.major_id == "NULL"){
-            req.body.major_id = null;
-        }
-        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.major_id, req.body.dorm_id];
+            var major_id = null;
+        }else {major_id = req.body.major_id}
+        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, major_id, req.body.dorm_id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -112,9 +112,9 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Students SET student_fname=?, student_lname=?, email=?, gpa=?, major_id=?, dorm_id=? WHERE student_id=?";
         if (req.body.major_id == "NULL"){
-            req.body.major_id = null;
-        }
-        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, req.body.major_id, req.body.dorm_id, req.params.student_id];
+            var major_id = null;
+        }else {major_id = req.body.major_id}
+        var inserts = [req.body.student_fname, req.body.student_lname, req.body.email, req.body.gpa, major_id, req.body.dorm_id, req.params.student_id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));

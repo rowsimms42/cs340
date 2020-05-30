@@ -35,7 +35,7 @@
 				<td>Major: </td>
 				<td><select name="major_id" id-"major-selector"> 
 					<option value=NULL>No Major</option>
-        			{{#each majors}}
+        			{{#each majorStudents}}
         			<option value="{{major_id}}">{{major_name}}</option>
         			{{/each}}
     				</select>
@@ -44,15 +44,17 @@
 			<tr>
 				<td>Dorm: </td>
 				<td><select name="dorm_id" id="dorm-selector"> 
-        			{{#each dorms}}
+        			{{#each dormStudents}}
         			<option value="{{dorm_id}}">{{dorm_name}}</option>
         			{{/each}}
     				</select>
 				</td>
             </tr>
+			<tr>
+				<button onclick="updateStudent({{student.student_id}})">Update</button>
+            </tr>
 			</table>
 		</form>
-        <button onclick="updateStudent({{student.student_id}})">Update</button>
 	</div>
 
 <script defer>selectDorm({{student.dorm_id}});</script>

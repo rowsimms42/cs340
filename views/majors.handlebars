@@ -10,10 +10,10 @@
 
 <section>
 <div class = "table">
-	<div class = "header">
-	<p>Add major:</p>
-	</div>	
-		<form id="addMajor" action="/majors" method="post">
+<form id="addmajor" action="/majors" method="post">
+<div class = "header">
+	<p>Add Major:</p>	
+	</div>
 			<table>
 			<tr>
 				<td>Major Name:</td> 
@@ -29,9 +29,9 @@
 			</tr>
 			<tr>
 				<td><input type="submit" id="Submit" value = "Submit"></td>
-			</tr>	
+			</tr>
+			</table>	
 		</form>
-		</table>
 	</div>
 
 	<table>
@@ -53,7 +53,7 @@
 				<td>{{major_name}}</td>
 				<td>{{dept_chair}}</td>
 				<td>{{required_units}}</td>
-				<td><a href="/update">Update</a></td>
+				<td><a href="/majors/{{major_id}}">Update</a></td>
 			</tr>
 			{{/each}}
 		</tbody>

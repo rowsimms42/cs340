@@ -1,0 +1,31 @@
+<header>
+	<nav class="navBar">
+			<a href="/">Home</a>
+			<a href="/students">Students</a>
+			<a href="/majors">Majors</a>
+			<a href="/classes">Classes</a>
+			<a href="/dorms">Dorms</a>
+			<a href="/registrations">Registrations</a>
+</header>
+
+<section>
+	<table>
+		<caption>Class List for: {{classListName.class_name}}, {{classListName.reg_class_id}}<caption>
+		<thead>
+		<table id = "t2">
+			<tr>
+				<th>Student ID</th>
+				<th>Student Name</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each classRegistrationList}}
+			<tr>
+				<td>{{reg_student_id}}</td>
+				<td>{{student_fname}} {{student_lname}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

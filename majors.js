@@ -48,7 +48,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["updatemajor.js"];
         var mysql = req.app.get('mysql');
-        getMajor(res, mysql, context, complete);
+        getMajor(res, mysql, context, req.params.major_id, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){

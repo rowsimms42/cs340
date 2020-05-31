@@ -14,7 +14,7 @@ module.exports = function(){
     }
 
     function getClass(res, mysql, context, class_id, complete){
-        var sql = "SELECT class_id, class_name, department, class_capacity FROM Classes WHERE class_id = ?";
+        var sql = "SELECT class_id, class_name, department, class_capacity FROM Classes WHERE class_id=?";
         var inserts = [class_id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -48,7 +48,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["updateclass.js"];
         var mysql = req.app.get('mysql');
-        getClass(res, mysql, context, complete);
+        getClass(res, mysql, context, req.params.class_id, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){

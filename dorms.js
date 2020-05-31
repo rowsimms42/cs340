@@ -48,7 +48,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["updatedorm.js"];
         var mysql = req.app.get('mysql');
-        getDorm(res, mysql, context, complete);
+        getDorm(res, mysql, context, req.params.dorm_id, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){

@@ -17,7 +17,7 @@
 			<table>
 			<tr>
 				<td>Student: </td>
-				<td><select name="reg_student_id"> 
+				<td><select id="reg_student_id" name="reg_student_id"> 
         			{{#each studentRegistrations}}
         			<option value="{{student_id}}">{{student_id}}, {{student_fname}} {{student_lname}}</option>
         			{{/each}}
@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td>Class: </td>
-				<td><select name="reg_class_id"> 
+				<td><select id="reg_class_id" name="reg_class_id"> 
         			{{#each classRegistrations}}
         			<option value="{{class_id}}">{{class_id}}, {{class_name}}</option>
         			{{/each}}
@@ -47,7 +47,7 @@
         <table>
             <tr>
 				<td>Class: </td>
-				<td><select name="reg_class_id"> 
+				<td><select id="reg_class_id" name="reg_class_id"> 
         			{{#each classRegistrationList}}
         			<option value="{{reg_class_id}}">{{reg_class_id}}, {{class_name}}</option>
         			{{/each}}
@@ -70,7 +70,7 @@
         <table>
             <tr>
 				<td>Student: </td>
-				<td><select name="reg_student_id"> 
+				<td><select id="reg_student_id" name="reg_student_id"> 
         			{{#each studentRegistrationSchedule}}
         			<option value="{{reg_student_id}}">{{reg_student_id}}, {{student_fname}} {{student_lname}}</option>
         			{{/each}}

@@ -12,7 +12,7 @@
 <div class = "table">
 <form id="addregistration" action="/registrations" method="post">
 <div class = "header">
-	<p>Register a Student:</p>	
+	<h3>Register a Student:</h3>	
 	</div>
 			<table>
 			<tr>
@@ -42,7 +42,7 @@
 	<br>
 	<form id="showclasslist" action="/registrations/{{reg_class_id}}" method="get"></form>
      <div class = "header">
-        <p>Search for Class Registration List:</p>
+        <h3>Search for Class Registration List:</h3>
         </div>
         <table>
             <tr>
@@ -65,7 +65,7 @@
 	<br>
 	<form id="showstudentschedule" action="/registrations/{{reg_student_id}}" method="get"></form>
      <div class = "header">
-        <p>Search for Student Class Schedule:</p>
+        <h3>Search for Student Class Schedule:</h3>
         </div>
         <table>
             <tr>
@@ -84,9 +84,12 @@
     </form>
 
     <br>
-    	
+  <div class = "header">
+                <h3>Current Registrations</h3>
+                </div>
+  	
 	<table>
-		<caption>Registrations<caption>
+		
 		<thead>
 		<table id = "t2">
 			<tr>

@@ -116,7 +116,7 @@ module.exports = function(){
         function complete(){
             callbackCount++;
             if(callbackCount >= 3){
-                res.render('students', context);
+                res.render('registrations', context);
             }
         }
     });

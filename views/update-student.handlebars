@@ -35,7 +35,7 @@
 				<td>Major: </td>
 				<td><select name="major_id" id="major-selector"> 
 					<option value=NULL>No Major</option>
-        			{{#each majorStudents}}
+        			{{#each majors}}
         			<option value="{{major_id}}">{{major_name}}</option>
         			{{/each}}
     				</select>
@@ -44,7 +44,7 @@
 			<tr>
 				<td>Dorm: </td>
 				<td><select name="dorm_id" id="dorm-selector"> 
-        			{{#each dormStudents}}
+        			{{#each dorms}}
         			<option value="{{dorm_id}}">{{dorm_name}}</option>
         			{{/each}}
     				</select>

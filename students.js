@@ -8,7 +8,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.dormStudents  = results;
+            context.dorms  = results;
             complete();
         });
     }
@@ -19,7 +19,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.majorStudents  = results;
+            context.majors  = results;
             complete();
         });
     }

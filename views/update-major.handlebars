@@ -17,15 +17,15 @@
 			<table>
 			<tr>
 				<td>Major Name: </td>
-				<td><input type="text" id="major_name" name="major_name"></td>
+				<td><input type="text" id="major_name" name="major_name" value="{{major.major_name}}"></td>
 			</tr>
 			<tr>
 				<td>Department Chair: </td>
-				<td><input type="text" id="dept_chair" name="dept_chair"></td>
+				<td><input type="text" id="dept_chair" name="dept_chair" value="{{major.dept_chair}}"></td>
 			</tr>
 			<tr>
 				<td>Required Units: </td>
-				<td><input type="text" id="required_units" name="required_units"></td>
+				<td><input type="text" id="required_units" name="required_units" value="{{major.required_units}}"></td>
 			</tr>
 			<td><button onclick="updateMajor({{major.major_id}})">Update</button></td>
 			</table>

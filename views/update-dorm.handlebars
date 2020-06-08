@@ -17,15 +17,15 @@
                         <table>
                         <tr>
                                 <td>Dorm Name: </td>
-                                <td><input type="text" id="dorm_name" name="dorm_name"></td>
+                                <td><input type="text" id="dorm_name" name="dorm_name" value="{{dorm.dorm_name}}"></td>
                         </tr>
                         <tr>
                                 <td>Address: </td>
-                                <td><input type="text" id="dorm_address" name="dorm_address"></td>
+                                <td><input type="text" id="dorm_address" name="dorm_address" value="{{dorm.dorm_address}}"></td>
                         </tr>
                         <tr>
                                 <td>Dorm Capacity: </td>
-                                <td><input type="text" id="dorm_capacity" name="dorm_capacity"></td>
+                                <td><input type="text" id="dorm_capacity" name="dorm_capacity" value="{{dorm.dorm_capacity}}"></td>
                         </tr>
                         <td> <button onclick="updateDorm({{dorm.dorm_id}})">Update</button></td>
 

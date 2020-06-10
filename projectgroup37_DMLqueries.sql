@@ -12,7 +12,7 @@ SELECT major_id, name FROM Majors
 SELECT major_name FROM Majors
 
 -- get all Students to list on the Students page
-SELECT student_id, fname, lname, email, gpa, major_id, dorm_id FROM Students
+SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students
 
 -- get all Majors to list on the Majors page
 SELECT major_id, major_name, dept_chair, required_units FROM Majors
@@ -24,64 +24,61 @@ SELECT dorm_id, dorm_name, dorm_address, dorm_capacity FROM Dorms
 SELECT class_id, class_name, department, class_capacity FROM Classes
 
 -- get all Registrations to list on the Registration page
-SELECT student_id, cid1, cid2, cid3, cid4, cid5 FROM Registration
+SELECT registration_id, reg_student_id, student_fname, student_lname, class_name, reg_class_id FROM Registrations, Students, Classes WHERE reg_student_id=student_id and reg_class_id=class_id
+
+--gets all rows with a given class id in Registrations, with information from linked rows in Students and Classes using fks reg_student_id and reg_class_id
+SELECT reg_student_id, student_fname, student_lname, class_name, reg_class_id FROM Registrations, Students, Classes WHERE reg_student_id=student_id and reg_class_id=class_id and reg_class_id=?
+
+--gets 3 attributes from all rows in Students to populate dropdown for adding registration
+SELECT student_id, student_fname, student_lname FROM Students
+
+--function gets 2 attributes from all rows in Classes to populate dropdown for adding registration
+SELECT class_id, class_name FROM Classes
 
 -- get a single Student's data for lookup on Students page and the Update Student form
-SELECT student_id, fname, lname, email, gpa, major_id, dorm_id FROM Students WHERE student_id = :student_ID_selected_from_students_page
+SELECT student_id, student_fname, student_lname, email, gpa, major_id, dorm_id FROM Students WHERE student_id=?
 
 -- get a single Major's data for Update Majors form
-SELECT major_id, major_name, dept_chair, required_units FROM Majors WHERE major_id = :major_ID_selected_from_majors_page
+SELECT major_id, major_name, dept_chair, required_units FROM Majors WHERE major_id=?
 
 -- get a single Dorm's data for Update Dorms form
-SELECT dorm_id, dorm_name, dorm_address, dorm_capacity FROM Dorms WHERE dorm_id = :dorm_ID_selected_from_dorms_page
+SELECT dorm_id, dorm_name, dorm_address, dorm_capacity FROM Dorms WHERE dorm_id=?
 
 -- get a single Class's data for Update Classes form
-SELECT class_id, class_name, department, class_capacity FROM Classes WHERE class_id = :class_ID_selected_from_classes_page
+SELECT class_id, class_name, department, class_capacity FROM Classes WHERE class_id=?
 
 -- get a single Student's Registration data for lookup on Registration page and the Update Registration form
-SELECT student_id, cid1, cid2, cid3, cid4, cid5 FROM Registration WHERE student_id = :student_ID_selected_from_registration_page
+SELECT student_id, cid1, cid2, cid3, cid4, cid5 FROM Registration WHERE student_id=?
 
 -- add a new Major - how to add major_id value as auto increment (not input based)?
-INSERT INTO Majors (major_name, dept_chair, required_units) VALUES (:major_nameInput, :dept_chairInput, :required_unitsInput)
+INSERT INTO Majors (major_name, dept_chair, required_units) VALUES (?,?,?)
 
 -- add a new Dorm - add dorm_id value as auto increment (not input)?
-INSERT INTO Dorms (dorm_name, dorm_address, dorm_capacity) VALUES (:dorm_nameInput, :dorm_addressInput, :dorm_capacityInput)
+INSERT INTO Dorms (dorm_name, dorm_address, dorm_capacity) VALUES (?,?,?)
 
 -- add a new Class - add class_id value automatically?
-INSERT INTO Classes (class_name, department, class_capacity) VALUES (:class_nameInput, :department_from_dropdown_Input, :class_capacityInput)
+INSERT INTO Classes (class_name, department, class_capacity) VALUES (?,?,?)
 
 -- add a new Student -- add studentv_id value automatically?
-INSERT INTO Students (fname, lname, email, gpa, dorm_id, major_id) VALUES (:fnameInput, :lnameInput, :emailInput, :gpaInput, :dorm_id_from_dropdown_Input, :major_id_from_dropdown_Input)
+INSERT INTO Students (student_fname, student_lname, email, gpa, dorm_id, major_id) VALUES (?,?,?,?,?,?)
 
 -- add a new Registration, associate a Student with classes (M-to-M relationship addition)
-INSERT INTO Registration (student_id, cid1, cid2, cid3, cid4, cid5) VALUES (:student_idInput, :cid1Input, :cid2Input, :cid3Input, :cid4Input, :cid5Input)
+INSERT INTO Registrations (reg_student_id, reg_class_id) VALUES (?,?)
 
 -- update a Student's data based on submission of the Update Student form 
-UPDATE Students SET fname = :fnameInput, lname= :lnameInput, email = :emailInput, gpa = :gpaInput, dorm_id = dorm_idInput, major_id = major_idInput WHERE student_id= :student_ID_selected_from_students_page
+UPDATE Students SET student_fname=?, student_lname=?, email=?, gpa=?, major_id=?, dorm_id=? WHERE student_id=?
 
 -- update a Major's data based on submission of the Update Major form 
-UPDATE Majors SET major_name = :major_nameInput, dept_chair = :dept_chairInput, required_units = :required_unitsInput WHERE major_id= :major_ID_selected_from_majors_page
+UPDATE Majors SET major_name=?, dept_chair=?, required_units=? WHERE major_id=?
 
 -- update a Dorm's data based on submission of the Update Dorm form 
-UPDATE Dorms SET dorm_name = :dorm_nameInput, dorm_address = :dorm_addressInput, dorm_capacity = :dorm_capacityInput WHERE dorm_id= :dorm_ID_selected_from_dorms_page
+UPDATE Dorms SET dorm_name=?, dorm_address=?, dorm_capacity=? WHERE dorm_id=?
 
 -- update a Class' data based on submission of the Update Class form 
-UPDATE Classes SET class_name = :class_nameInput, department = :department_from_dropdown_Input, class_capacity = :class_capacityInput WHERE class_id= :class_ID_selected_from_classes_page
-
--- update a Registration's data based on submission of the Update Registration form 
-UPDATE Registration SET cid1 = :cid1Input, cid2 = :cid2Input, cid3 = :cid3Input, cid4 = :cid4Input, cid5 = :cid5Input WHERE student_id= :student_ID_selected_from_registration_page
+UPDATE Classes SET class_name=?, department=?, class_capacity=? WHERE class_id=?
 
 -- delete a Student
-DELETE FROM Students WHERE student_id = :student_ID_selected_from_student_delete_form
-
--- delete a Major
-DELETE FROM Majors WHERE major_id = :major_ID_selected_from_delete_form
-
--- delete a Dorm
-DELETE FROM Dorms WHERE dorm_id = :dorm_ID_selected_from_delete_form
-
--- delete a Class
-DELETE FROM Classes WHERE class_id = :class_ID_selected_from_delete_form
+DELETE FROM Students WHERE student_id=?
 
 -- dis-associate a certificate from a person (M-to-M relationship deletion)
-DELETE FROM Registration WHERE student_id = :student_ID_selected_from_registration_delete_form
+DELETE FROM Registrations WHERE registration_id=?

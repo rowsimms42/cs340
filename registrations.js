@@ -113,11 +113,9 @@ module.exports = function(){
         getRegistrations(res, mysql, context, complete);
         getStudentRegistrations(res, mysql, context, complete);
         getClassRegistrations(res, mysql, context, complete);
-        getClassRegistrationList(res, mysql, context, reg_class_id, complete);
-        getStudentRegistrationSchedule(res, mysql, context, reg_student_id, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 5){
+            if(callbackCount >= 3){
                 res.render('registrations', context);
             }
         }

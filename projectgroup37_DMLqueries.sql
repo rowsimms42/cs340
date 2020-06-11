@@ -26,8 +26,8 @@ SELECT class_id, class_name, department, class_capacity FROM Classes
 -- get all Registrations to list on the Registration page
 SELECT registration_id, reg_student_id, student_fname, student_lname, class_name, reg_class_id FROM Registrations, Students, Classes WHERE reg_student_id=student_id and reg_class_id=class_id
 
---gets all rows with a given class id in Registrations, with information from linked rows in Students and Classes using fks reg_student_id and reg_class_id
-SELECT reg_student_id, student_fname, student_lname, class_name, reg_class_id FROM Registrations, Students, Classes WHERE reg_student_id=student_id and reg_class_id=class_id and reg_class_id=?
+--gets all rows with a given student id in Registrations, with information from linked rows in Students and Classes using fks reg_student_id and reg_class_id
+SELECT reg_student_id, student_fname, student_lname, class_name, reg_class_id FROM Registrations, Students, Classes WHERE reg_student_id=student_id and reg_class_id=class_id and reg_student_id=?
 
 --gets 3 attributes from all rows in Students to populate dropdown for adding registration
 SELECT student_id, student_fname, student_lname FROM Students

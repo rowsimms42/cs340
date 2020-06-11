@@ -22,8 +22,7 @@ app.use('/update-class', require('./classes.js'));
 app.use('/dorms', require('./dorms.js'));
 app.use('/update-dorm', require('./dorms.js'));
 app.use('/registrations', require('./registrations.js'));
-app.use('/class-registrations', require('./registrations.js'));
-app.use('/student-registrations', require('./registrations.js'));
+app.use('/search-schedules', require('./search-schedules.js'));
 
 app.get('/', function(req, res){
 	res.render("home");

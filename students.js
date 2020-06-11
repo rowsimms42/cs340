@@ -48,6 +48,22 @@ module.exports = function(){
         });
     }
 
+    /* Function gets all rows with a given student id in Registrations, with information from linked rows in Students and Classes using fks reg_student_id and reg_class_id */
+    
+    function getStudentRegistrationSchedule(res, mysql, context, reg_student_id, complete){
+        var sql = "SELECT reg_student_id, student_fname, student_lname, class_name, reg_class_id FROM Registrations, Students, Classes WHERE reg_student_id=student_id and reg_class_id=class_id and reg_student_id=?";
+        var inserts = [reg_student_id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.studentRegistrationSchedule = results;
+            context.studentScheduleName = results[0];
+            complete();
+        });
+    }
+
     /*Display all students. Requires web based javascript to delete users with AJAX*/
 
     router.get('/', function(req, res){
@@ -62,6 +78,22 @@ module.exports = function(){
             callbackCount++;
             if(callbackCount >= 3){
                 res.render('students', context);
+            }
+        }
+    });
+
+    /*Display all classes on schedule/registered for a given student. Requires web based javascript to delete users with AJAX */
+
+    router.get('/search/:reg_student_id', function(req, res){
+        var callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["deleteregistration.js","searchstudentschedule.js"];
+        var mysql = req.app.get('mysql');
+        getStudentRegistrationSchedule(res, mysql, context, reg_student_id, complete)
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('search-schedules-result', context);
             }
         }
     });

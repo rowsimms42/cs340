@@ -6,6 +6,7 @@
 			<a href="/classes">Classes</a>
 			<a href="/dorms">Dorms</a>
 			<a href="/registrations">Registration</a>
+			<a href="/seach-schedules">Search Schedules</a>
 </header>
 
 <section>
@@ -38,50 +39,6 @@
 			</table>
 		</form>
 	</div>
-
-	<br>
-	<form id="showclasslist" action="/registrations/{{reg_class_id}}" method="get"></form>
-     <div class = "header">
-        <h3>Search for Class Registration List:</h3>
-        </div>
-        <table>
-            <tr>
-				<td>Class: </td>
-				<td><select id="reg_class_id" name="reg_class_id"> 
-        			{{#each registrations}}
-        			<option value="{{reg_class_id}}">{{reg_class_id}}, {{class_name}}</option>
-        			{{/each}}
-    				</select>
-				</td>
-            </tr>
-            <tr>
-                <td><input type="button" id="Submit" value="Submit"></td>
-            </tr>
-        </table>
-    </form>
-
-    <br>
-
-	<br>
-	<form id="showstudentschedule" action="/registrations/{{reg_student_id}}" method="get"></form>
-     <div class = "header">
-        <h3>Search for Student Class Schedule:</h3>
-        </div>
-        <table>
-            <tr>
-				<td>Student: </td>
-				<td><select id="reg_student_id" name="reg_student_id"> 
-        			{{#each registrations}}
-        			<option value="{{reg_student_id}}">{{reg_student_id}}, {{student_fname}} {{student_lname}}</option>
-        			{{/each}}
-    				</select>
-				</td>
-            </tr>
-            <tr>
-                <td><input type="button" id="Submit" value="Submit"></td>
-            </tr>
-        </table>
-    </form>
 
     <br>
   <div class = "header">

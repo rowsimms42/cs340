@@ -46,7 +46,7 @@ module.exports = function(){
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){
-                res.render('search-schedules-form', context);
+                res.render('search-schedules', context);
             }
         }
     });
@@ -55,7 +55,7 @@ module.exports = function(){
 
     /* Display one student's classes from registrations (search page result) */
 
-    router.post('/search-schedules', function(req, res){
+    router.get('/:reg_student_id', function(req, res){
         callbackCount = 0;
         var context = {};
         context.jsscripts = ["deleteregistration.js"];

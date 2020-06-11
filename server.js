@@ -23,6 +23,9 @@ app.use('/dorms', require('./dorms.js'));
 app.use('/update-dorm', require('./dorms.js'));
 app.use('/registrations', require('./registrations.js'));
 app.use('/search-schedules', require('./search-schedules.js'));
+app.use('/search-schedules-form', require('./search-schedules.js'));
+app.use('/search-schedules-result', require('./search-schedules.js'));
+
 
 app.get('/', function(req, res){
 	res.render("home");

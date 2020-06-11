@@ -69,7 +69,7 @@ module.exports = function(){
     router.get('/', function(req, res){
     	var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deletestudent.js"];
+        context.jsscripts = ["deletestudent.js", "searchstudentschedule.js"];
         var mysql = req.app.get('mysql');
         getStudents(res, mysql, context, complete);
         getDormsStudents(res, mysql, context, complete);
@@ -89,7 +89,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["deleteregistration.js","searchstudentschedule.js"];
         var mysql = req.app.get('mysql');
-        getStudentRegistrationSchedule(res, mysql, context, reg_student_id, complete)
+        getStudentRegistrationSchedule(res, mysql, context, req.params.reg_student_id, complete)
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){

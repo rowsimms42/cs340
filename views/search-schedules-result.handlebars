@@ -6,15 +6,14 @@
 			<a href="/classes">Classes</a>
 			<a href="/dorms">Dorms</a>
 			<a href="/registrations">Registrations</a>
-			<a href="/seach-schedules">Search Schedules</a>
 </header>
 
 <section>
 <div class = "header">
-                <h3>Search Results:</h3>
-                </div>
+        <h3>Search Results</h3>
+		<p> Class Schedule for {{studentScheduleName.student_fname}} {{studentScheduleName.student_lname}}, {{studentScheduleName.reg_student_id}}</p>
+</div>
 	<table>
-		<caption>Class Schedule for: {{studentScheduleName.student_fname}} {{studentScheduleName.student_lname}}, {{studentScheduleName.reg_student_id}}<caption>
 		<thead>
 		<table id = "t2">
 			<tr>
@@ -28,7 +27,6 @@
 			<tr>
 				<td>{{reg_class_id}}</td>
 				<td>{{class_name}}</td>
-				<td><button onclick="deleteRegistration({{registration_id}})">Delete Class from Schedule</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
